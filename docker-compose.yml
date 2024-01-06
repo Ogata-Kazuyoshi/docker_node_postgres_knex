@@ -2,9 +2,9 @@ version: '3'
 services:
   frontend:
     container_name: frontend-react
-    build: ./client
+    build: ./client2
     volumes:
-      - ./client/dist:/var/www/html
+      - ./client2/dist:/var/www/html
     ports:
       - 5050:80
 
