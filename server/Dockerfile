@@ -10,8 +10,14 @@ COPY ./ ./
 RUN npm cache clean --force 
 RUN npm install
 
-# NODE_ENVがproductionの場合のみnpm run buildを実行
-RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
+# エントリポイントスクリプトをコピー
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# # NODE_ENVがproductionの場合のみnpm run buildを実行
+# RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
+# エントリポイントを設定
+ENTRYPOINT ["entrypoint.sh"]
 
 
 
