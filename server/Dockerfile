@@ -10,15 +10,16 @@ COPY ./ ./
 RUN npm cache clean --force 
 RUN npm install
 
-# エントリポイントスクリプトをコピー
-COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
+# **エントリーポイントを指定した方法が下記。ただ難しいので、CMDに無理やり２つ書いた方法で最後はデプロイ*********
+# # エントリポイントスクリプトをコピー
+# COPY entrypoint.sh /usr/local/bin/
+# RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# # NODE_ENVがproductionの場合のみnpm run buildを実行
-# RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
-# エントリポイントを設定
-ENTRYPOINT ["entrypoint.sh"]
+# # エントリポイントを設定
+# ENTRYPOINT ["entrypoint.sh"]
+# ********************************************************************************************
 
 
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
+CMD npm run build && npm start
