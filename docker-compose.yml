@@ -1,5 +1,14 @@
 version: '3'
 services:
+  frontend:
+    container_name: frontend-react
+    build: ./client
+    volumes:
+      - ./client/dist:/var/www/html
+    ports:
+      - 5050:80
+    environment:
+      BACKEND_DOMAIN: node_express_knex
   node:
     container_name: node_express_knex
     build: ./server
