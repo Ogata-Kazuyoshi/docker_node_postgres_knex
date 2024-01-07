@@ -16,7 +16,7 @@ function App() {
     <>
       <div>
         <button onClick={clickgetData}>
-          GetDBデータ!!!!テスト!!分ます！！できてる？この--hostが効いてます！majide!!!これ最高やわ!
+          GetDBデータ!!!!テスト!!分ます！！真面目にええ感じちゃう？
         </button>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

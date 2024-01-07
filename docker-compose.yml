@@ -1,14 +1,26 @@
 version: '3'
 services:
-  frontend:
+  static:
     container_name: frontend-react
-    build: ./client2
+    build: ./client
     volumes:
-      - ./client2/dist:/var/www/html
+      - ./client/react/dist:/var/www/html
     ports:
-      - 5050:80
+      - 6120:80
 
-  node:
+  nodereact:
+    container_name: node_react
+    build: ./client/react
+    volumes:
+      - ./client/react:/app
+    tty: true
+    ports:
+      - 6110:5173
+    working_dir: /app
+    command: >
+      bash -c 'npm i && npm run build:watch && npm run dev'
+
+  nodeback:
     container_name: node_express_knex
     build: ./server
     volumes:
