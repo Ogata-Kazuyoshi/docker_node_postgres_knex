@@ -6,7 +6,7 @@ services:
     volumes:
       - ./client/react/dist:/var/www/html
     ports:
-      - 6120:80
+      - 6120:80 #ubuntuのhttpリクエストは８０ポートで受け付ける。そのため、コンテナ内部ポートを80にしている
 
   nodereact:
     container_name: node_react
@@ -15,7 +15,7 @@ services:
       - ./client/react:/app
     tty: true
     ports:
-      - 6110:5173
+      - 6110:5173 #vite-reactのデフォルト開放ぽーとは5173。ただし、vite.config.jsにPORT指定できるので、変更した場合は：右側のコンテナ内部ポートも変更すること
     working_dir: /app
     command: >
       bash -c 'npm i && npm run build:watch && npm run dev'
