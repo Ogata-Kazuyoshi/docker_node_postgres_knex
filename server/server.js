@@ -20,7 +20,7 @@ const setupServer = () => {
   //     res.redirect('/');
   //   });
   //
-  app.get('/data', async (req, res) => {
+  app.get('/api/v1/data', async (req, res) => {
     const data = await knex('users').select();
     res.status(200).send(data);
   });

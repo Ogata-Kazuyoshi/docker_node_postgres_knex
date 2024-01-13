@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import dataApi from './api/data';
+import proxyApi from './api/proxytest';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,11 +13,17 @@ function App() {
     console.log(res);
   };
 
+  const clickProxy = async () => {
+    const res = await proxyApi.getAll();
+    console.log(res.data);
+  };
+
   return (
     <>
       <div>
-        <button onClick={clickgetData}>
-          GetDBデータ!!!!テスト!!分ます！！真面目にええ感じちゃう？
+        <button onClick={clickgetData}>ローカルサーバー叩いてます</button>
+        <button onClick={clickProxy}>
+          Proxy設定により、Docker内の別コンテナ叩いてます
         </button>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
